@@ -26,7 +26,7 @@ function Carta ({ cor, virado, onClick, id }: Props) {
           padding: 3,
           margin: 3,
           backgroundColor: cor,
-          width: 110,
+          width: 120,
           height: 130
         } : style.verso}
       />
@@ -41,7 +41,7 @@ const style = StyleSheet.create({
     padding: 3,
     margin: 3,
     backgroundColor: 'grey',
-    width: 110,
+    width: 120,
     height: 130
   }
 })

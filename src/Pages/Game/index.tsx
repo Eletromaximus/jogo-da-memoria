@@ -22,24 +22,31 @@ function Mesa () {
     }
   }, [segundo])
 
-  // const memoria = useCallback(comparando, [primeiro, segundo])
 
   function desvirar (index: number) {
     const novoCartas = [...cartas]
     novoCartas[index].virado = !cartas[index].virado
-    setCartas(cartas)
+    setCartas(novoCartas)
   }
 
+
   function comparando () {
+    var first = primeiro.valueOf()
+    var second = segundo.valueOf()
+
     if (cartas[primeiro].id !== cartas[segundo].id) {
-      desvirar(primeiro)
+
       setPrimeiro(-1)
-      desvirar(segundo)
       setSegundo(-1)
+      desvirar(first)
+      desvirar(second)
+      
+
     } else {
       setPrimeiro(-1)
       setSegundo(-1)
     }
+
   }
 
   function alteracao (item: IMesa, index: number) {
@@ -53,6 +60,7 @@ function Mesa () {
       if (segundo === -1) {
         setSegundo(index)
         desvirar(index)
+       
       }
     }
   }

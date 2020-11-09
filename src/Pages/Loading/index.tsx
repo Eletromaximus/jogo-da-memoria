@@ -1,27 +1,19 @@
 // eslint-disable-next-line no-use-before-define
 import React, { useEffect } from 'react'
 
-import { StyleSheet, View } from 'react-native'
-import Animated, {
-  Easing,
-  useSharedValue,
-  useAnimatedStyle,
-  withTiming,
-  interpolate,
-  Extrapolate
-} from 'react-native-reanimated'
+import { StyleSheet, View, Button } from 'react-native'
+import Animated from 'react-native-reanimated'
 import { useNavigation } from '@react-navigation/native'
 
 // import { Container } from './styles';
 
 const Loading: React.FC = () => {
   const { navigate } = useNavigation()
-  const titlePosition = useSharedValue(30)
-
-  useEffect(() => {
-    titlePosition.value = withTiming(0, { duration: 1000, easing: Easing.bounce },
-      () => { navigate('Game') })
-  }, [])
+  //const titlePosition = useSharedValue(30)
+/*
+  useEffect(() =>{
+    return () => navigate('Game')
+  }, [] )
 
   const titleStyle = useAnimatedStyle(() => {
     return {
@@ -34,12 +26,17 @@ const Loading: React.FC = () => {
       )
     }
   })
+  */
 
   return (
     <View style={styles.container}>
-      <Animated.Text style={[styles.title, titleStyle]}>
+      <Animated.Text style={styles.title}>
         Bem Vindo!
+        
       </Animated.Text>
+      <Button title='Começar!' onPress={ () =>
+          navigate('Game')
+        }> Start </Button>
     </View>
   )
 }
@@ -54,6 +51,11 @@ const styles = StyleSheet.create({
   title: {
     color: '#fff',
     fontSize: 24
+  },
+  botao: {
+    backgroundColor: 'yellow',
+    alignItems: 'center',
+    justifyContent: "center"
   }
 })
 
